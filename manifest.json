@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "FB Video Downloader Button",
+  "version": "1.0.0",
+  "description": "Adds a download button to Facebook videos, reels, and feeds and wherever videos are found.",
+  "permissions": [
+    "downloads"
+  ],
+  "host_permissions": [
+    "*://*.facebook.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.facebook.com/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["injected.js"],
+      "matches": ["*://*.facebook.com/*"]
+    }
+  ]
+}
